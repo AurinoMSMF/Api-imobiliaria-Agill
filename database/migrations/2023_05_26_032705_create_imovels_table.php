@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('imovels', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('idDono');
+            $table->foreign('idDono')->references('id')->on('users');
             $table->string('titulo',50);
             $table->integer('val_diaria');
             $table->string('CEP', 9);

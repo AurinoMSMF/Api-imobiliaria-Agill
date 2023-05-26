@@ -29,6 +29,7 @@ class ImovelController extends Controller
     public function store(Request $request)
     {
         $imovel=Imovel::create([
+            'idDono' => $request->idDono,
             'titulo' => $request->titulo,
             'val_diaria' => $request->val_diaria,
             'CEP' => $request->CEP,
@@ -68,7 +69,7 @@ class ImovelController extends Controller
         }
     }
 
-    public function edit(string $id)
+    public function edit(int $id)
     {
         $imovel=Imovel::findOrFail($id);
         if($imovel){
@@ -89,6 +90,7 @@ class ImovelController extends Controller
         $imovel=Imovel::findOrFail($id);
         if($imovel){
             $imovel->update([
+                'idDono' => $request->idDono,
                 'titulo' => $request->titulo,
                 'val_diaria' => $request->val_diaria,
                 'CEP' => $request->CEP,
@@ -110,7 +112,7 @@ class ImovelController extends Controller
 
     }
 
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         $imovel=Imovel::findOrFail($id);
         if($imovel){

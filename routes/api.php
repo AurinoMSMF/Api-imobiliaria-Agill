@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\ImovelController;
+use App\Http\Controllers\api\LocacaoController;
 
 Route::get('imoveis',[ImovelController::class, 'index']);
 
@@ -14,20 +15,14 @@ Route::put('imoveis/{id}/editar',[ImovelController::class, 'update']);
 
 Route::delete('imoveis/{id}/excluir',[ImovelController::class, 'destroy']);
 
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('locacoes',[LocacaoController::class,'index']);
 
-/*Route::get('/api', [ImovelController::class, 'index']);
+Route::post('locacoes',[LocacaoController::class, 'store']);
 
-Route::get('/api/imoveis/locar', [ImovelController::class, 'locar']);
+Route::get('locacoes/{id}',[LocacaoController::class, 'show']);
 
-Route::get('/api/imoveis/cadastrar', [ImovelController::class, 'cadastrarImovel']);
+Route::get('locacoes/{id}/editar',[LocacaoController::class, 'edit']);
 
-Route::get('/api/imoveis', [ImovelController::class, 'verImoveis']);
+Route::put('locacoes/{id}/editar',[LocacaoController::class, 'update']);
 
-Route::get('/api/imoveis/{id}', [ImovelController::class, 'verImovelUnico']);
-
-Route::post('/api/imoveis', [ImovelController::class, 'store']);
-
-Route::delete('/api/imoveis/{id}', [ImovelController::class,'apagarImovel']);*/
+Route::delete('locacoes/{id}/excluir',[LocacaoController::class, 'destroy']);

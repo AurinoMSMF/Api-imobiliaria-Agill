@@ -10,6 +10,7 @@ class Imovel extends Model
     protected $table= 'imovels';
 
     protected $fillable = [
+        'idDono',
         'titulo',
         'val_diaria',
         'CEP',
