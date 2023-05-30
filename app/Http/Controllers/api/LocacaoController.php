@@ -50,7 +50,7 @@ class LocacaoController extends Controller
 
     public function show(string $id)
     {
-        $locacao=Locacao::findOrFail($id);
+        $locacao=Locacao::find($id);
         if($locacao){
             return response()->json([
                 'status' => 200,
@@ -66,7 +66,7 @@ class LocacaoController extends Controller
 
     public function edit(int $id)
     {
-        $locacao=Locacao::findOrFail($id);
+        $locacao=Locacao::find($id);
         if($locacao){
             return response()->json([
                 'status' => 200,
@@ -82,7 +82,7 @@ class LocacaoController extends Controller
 
     public function update(Request $request, int $id)
     {
-        $locacao=Locacao::findOrFail($id);
+        $locacao=Locacao::find($id);
         if($locacao){
             $locacao->update([
                 'idImovel' => $request->idImovel,
@@ -105,7 +105,7 @@ class LocacaoController extends Controller
 
     public function destroy(int $id)
     {
-        $locacao=Locacao::findOrFail($id);
+        $locacao=Locacao::find($id);
         if($locacao){
             $locacao->delete();
             return response()->json([

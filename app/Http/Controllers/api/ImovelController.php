@@ -53,25 +53,25 @@ class ImovelController extends Controller
 
     }
 
-    public function show(string $id)
+    public function show(int $id)
     {
-        $imovel=Imovel::findOrFail($id);
+        $imovel=Imovel::find($id);
         if($imovel){
             return response()->json([
                 'status' => 200,
                 'message' => $imovel
             ],200);
-        } else {
+        } else if (!$imovel){
             return response()->json([
                 'status' => 404,
-                'message' => "Nenhum imóvel encontrado."
+                'message' => "Imovel de id " . $id . " não encontrado."
             ],404);
         }
     }
 
     public function edit(int $id)
     {
-        $imovel=Imovel::findOrFail($id);
+        $imovel=Imovel::find($id);
         if($imovel){
             return response()->json([
                 'status' => 200,
@@ -87,7 +87,7 @@ class ImovelController extends Controller
 
     public function update(Request $request, int $id)
     {
-        $imovel=Imovel::findOrFail($id);
+        $imovel=Imovel::find($id);
         if($imovel){
             $imovel->update([
                 'idDono' => $request->idDono,
@@ -114,7 +114,7 @@ class ImovelController extends Controller
 
     public function destroy(int $id)
     {
-        $imovel=Imovel::findOrFail($id);
+        $imovel=Imovel::find($id);
         if($imovel){
             $imovel->delete();
             return response()->json([
